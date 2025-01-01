@@ -18,6 +18,9 @@ const Layout = () => {
             <li>
               <Link to="/login">Logowanie</Link>
             </li>
+            <li>
+              <Link to="/register">Rejestracja</Link>
+            </li>
           </ul>
         </nav>
       </header>

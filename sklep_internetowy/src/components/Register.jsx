@@ -1,0 +1,44 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+const Register = () => {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
+
+    const handleRegister = () => {
+        if (!username || !password || !email)
+        {
+            setError("All fields are required");
+            return;
+        }
+        
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        const isUserExist = users.find((user) => user.username === username);
+
+        if (isUserExist) {
+        setError("Username is already taken.");
+        return;
+        }
+
+        const newUser = { username, password, email };
+        const updatedUsers = [...users, newUser];
+        localStorage.setItem("users", JSON.stringify(updatedUsers));
+        navigate("/login");
+    };
+
+    return (
+        <div className='register-page'>
+            <h1>Rejestracja</h1>
+            <input type='text' placeholder='Username' value={username} onChange={(e) => setUsername(e.target.value)}></input>
+            <input type='email' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)}></input>
+            <input type='password' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)}></input>
+            <h2>{error}</h2>
+            <button onClick={handleRegister}>Register</button>
+        </div>
+    );
+};
+
+export default Register;

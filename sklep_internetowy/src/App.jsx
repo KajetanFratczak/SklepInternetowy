@@ -5,6 +5,7 @@ import Products from "./components/Products";
 import ProductDetails from "./components/ProductDetails";
 import Cart from "./components/Cart";
 import Login from "./components/Login";
+import Register from "./components/Register";
 import OrderHistory from "./components/OrderHistory";
 import Admin from "./components/Admin";
 import NoPage from "./components/NoPage";
@@ -21,6 +22,7 @@ function App()
           <Route path="product/:id" element={<ProductDetails />} />
           <Route path="cart" element={<Cart />} />
           <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
           <Route path="orders" element={<OrderHistory />} />
           <Route path="admin" element={<Admin />} />
           <Route path="*" element={<NoPage />} />
