@@ -19,15 +19,15 @@ const Login = () => {
         } 
         else 
         {
-          setError("Invalid username or password");
+          setError("Niepoprawny login lub hasło");
         }
     };
 
     return (
         <div className='login-page'>
             <h1>Logowanie</h1>
-            <input type='text' placeholder='Username' value={username} onChange={(e) => setUsername(e.target.value)}></input>
-            <input type='password' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)}></input>
+            <input type='text' placeholder='Login' value={username} onChange={(e) => setUsername(e.target.value)}></input>
+            <input type='password' placeholder='Hasło' value={password} onChange={(e) => setPassword(e.target.value)}></input>
             <h2>{error}</h2>
             <button onClick={handleLogin}>Login</button>
         </div>

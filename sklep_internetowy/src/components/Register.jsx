@@ -11,7 +11,7 @@ const Register = () => {
     const handleRegister = () => {
         if (!username || !password || !email)
         {
-            setError("All fields are required");
+            setError("Wszystkie pola są wymagane.");
             return;
         }
         
@@ -19,7 +19,7 @@ const Register = () => {
         const isUserExist = users.find((user) => user.username === username);
 
         if (isUserExist) {
-        setError("Username is already taken.");
+        setError("Nazwa użytkownika jest już zajęta.");
         return;
         }
 
@@ -32,9 +32,9 @@ const Register = () => {
     return (
         <div className='register-page'>
             <h1>Rejestracja</h1>
-            <input type='text' placeholder='Username' value={username} onChange={(e) => setUsername(e.target.value)}></input>
+            <input type='text' placeholder='Login' value={username} onChange={(e) => setUsername(e.target.value)}></input>
             <input type='email' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)}></input>
-            <input type='password' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)}></input>
+            <input type='password' placeholder='Hasło' value={password} onChange={(e) => setPassword(e.target.value)}></input>
             <h2>{error}</h2>
             <button onClick={handleRegister}>Register</button>
         </div>
