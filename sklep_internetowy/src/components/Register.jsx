@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { saveUser } from '../mocks/users';
 
 const Register = () => {
     const [username, setUsername] = useState("");
@@ -19,13 +20,12 @@ const Register = () => {
         const isUserExist = users.find((user) => user.username === username);
 
         if (isUserExist) {
-        setError("Nazwa użytkownika jest już zajęta.");
-        return;
+            setError("Nazwa użytkownika jest już zajęta.");
+            return;
         }
 
         const newUser = { username, password, email };
-        const updatedUsers = [...users, newUser];
-        localStorage.setItem("users", JSON.stringify(updatedUsers));
+        saveUser(newUser);
         navigate("/login");
     };
 

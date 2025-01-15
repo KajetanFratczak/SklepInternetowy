@@ -1,6 +1,10 @@
 import { Outlet, Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Layout = () => {
+
+  const {user, logout} = useAuth();
+  
   return (
     <>
       <header>
@@ -15,12 +19,34 @@ const Layout = () => {
             <li>
               <Link to="/cart">Koszyk</Link>
             </li>
-            <li>
-              <Link to="/login">Logowanie</Link>
-            </li>
-            <li>
-              <Link to="/register">Rejestracja</Link>
-            </li>
+
+            {user ? (
+              <>
+                <li>
+                  <Link to="/orders">Zamówienia</Link>
+                </li>
+                {user.role === 'admin' && (
+                  <li>
+                    <Link to="/admin">Panel Admina</Link>
+                  </li>
+                )}
+                <li>
+                  <Link to="/profile">Mój Profil</Link>
+                </li>
+                <li>
+                  <button onClick={logout}>Wyloguj się</button>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link to="/login">Zaloguj się</Link>
+                </li>
+                <li>
+                  <Link to="/register">Zarejestruj się</Link>
+                </li>
+              </>
+            )}
           </ul>
         </nav>
       </header>

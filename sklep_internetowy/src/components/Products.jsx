@@ -9,6 +9,7 @@ const Products = () => {
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('all');
+    const [searchText, setSearchText] = useState('');
     const { addToCart } = useContext(CartContext);
     
     useEffect(() => {
@@ -23,9 +24,7 @@ const Products = () => {
         setCategories(uniqueCategories)
     }, [products]);
 
-    const filteredProducts = selectedCategory === 'all'
-        ? products
-        : products.filter(product => product.category === selectedCategory);
+    const filteredProducts = products.filter(product => selectedCategory === 'all' || product.category === selectedCategory).filter(product => product.title.toLowerCase().includes(searchText.toLowerCase()));
 
     return (
       <div className="product-page">
@@ -43,6 +42,18 @@ const Products = () => {
                     </option>
                 ))}
             </select>
+        </div>
+
+        {/* Wyszukiwanie */}
+        <div className="search-filter">
+            <label htmlFor="search-text">Szukaj produktu po nazwie: </label>
+            <input
+                id="search-text"
+                type='text'
+                placeholder='Wpisz nazwę produktu...'
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
+            />
         </div>
 
         {/* Lista produktów */}
