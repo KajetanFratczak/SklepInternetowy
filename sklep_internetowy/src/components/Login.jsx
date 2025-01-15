@@ -1,25 +1,26 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const navigate = useNavigate();
+    const { login } = useAuth();
 
     const handleLogin = () => {
-        const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
-        const user = storedUsers.find((u) => u.username === username && u.password === password);
-      
-        if (user) 
-        {
-          localStorage.setItem("loggedInUser", JSON.stringify(user));
-          setError("");
-          navigate("/");
-        } 
-        else 
-        {
-          setError("Niepoprawny login lub hasło");
+        if (!username || !password) {
+          setError('Wszystkie pola są wymagane.');
+          return;
+        }
+    
+        const result = login(username, password);
+        if (result.success) {
+          setError('');
+          navigate('/');
+        } else {
+          setError(result.error);
         }
     };
 
