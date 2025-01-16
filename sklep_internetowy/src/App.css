@@ -149,3 +149,44 @@ nav ul li a:hover {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+
+.order-history {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.order-item {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.order-header {
+  margin-bottom: 1rem;
+}
+
+.order-products ul {
+  list-style: none;
+  padding: 0;
+}
+
+.order-products li {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  background-color: white;
+  border-radius: 3px;
+}
+
+.checkout-button {
+  margin-left: 1rem;
+  background-color: #4CAF50;
+  color: white;
+}
+
+.checkout-button:hover {
+  background-color: #45a049;
+}
