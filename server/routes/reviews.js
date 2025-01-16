@@ -8,7 +8,7 @@
 const express = require('express');
 const router = express.Router();
 const Review = require('../models/review');
-const { isAuthenticated, isAdmin } = require('../middleware/auth');
+const { auth, isAdmin } = require('../middleware/auth');
 
 // Pobierz opinie dla konkretnego produktu
 router.get('/:productId', async (req, res) => {
@@ -22,7 +22,7 @@ router.get('/:productId', async (req, res) => {
 });
 
 // Dodaj nową opinię
-router.post('/', isAuthenticated, async (req, res) => {
+router.post('/', auth, async (req, res) => {
     try {
         const { productId, rating, message } = req.body;
         const userId = req.user.id;
@@ -52,7 +52,7 @@ router.post('/', isAuthenticated, async (req, res) => {
 });
 
 // Usuń opinię
-router.delete('/:id', isAuthenticated, async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
     try {
         const { id } = req.params;
         const review = await Review.findById(id);
@@ -73,7 +73,7 @@ router.delete('/:id', isAuthenticated, async (req, res) => {
 });
 
 // Zaktualizuj opinię
-router.put('/:id', isAuthenticated, async (req, res) => {
+router.put('/:id', auth, async (req, res) => {
     try {
         const { id } = req.params;
         const { rating, message } = req.body;

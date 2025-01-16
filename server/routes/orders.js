@@ -1,10 +1,10 @@
 const express = require('express');
 const Order = require('../models/order');
-const { isAuthenticated } = require('../middleware/auth');
+const { auth } = require('../middleware/auth');
 const router = express.Router();
 
 // Pobieranie historii zamówień dla użytkownika
-router.get('/history', isAuthenticated, async (req, res) => {
+router.get('/history', auth, async (req, res) => {
     try {
         const orders = await Order.find({ userId: req.user.userId })
             .populate('products.productId') // Pobieramy dane o produktach (np. tytuł, cena)
@@ -16,7 +16,7 @@ router.get('/history', isAuthenticated, async (req, res) => {
 });
 
 // Tworzenie nowego zamówienia
-router.post('/create', isAuthenticated, async (req, res) => {
+router.post('/create', auth, async (req, res) => {
     const { products, totalPrice } = req.body;
     
     if (!products || !totalPrice || totalPrice <= 0) {

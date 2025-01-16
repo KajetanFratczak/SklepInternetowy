@@ -45,7 +45,7 @@ const ProductReview = ({ productId }) => {
             userId: user.id,
             email: user.email,
             rating,
-            message,
+            message
         };
 
         const result = saveReview(newReview);
@@ -55,7 +55,6 @@ const ProductReview = ({ productId }) => {
             setMessage('');
             setError('');
             loadReviews();
-            window.location.reload();
         } else {
             setError(result.error);
         }
