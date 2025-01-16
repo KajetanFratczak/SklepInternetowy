@@ -1,7 +1,7 @@
 export const mockReviews = [
     {
         id: 1,
-        userId: 1,
+        userId: 2,
         productId: 1,
         date: "2025-01-15",
         username: "user1",
@@ -12,7 +12,7 @@ export const mockReviews = [
 
     {
         id: 2,
-        userId: 2,
+        userId: 1,
         productId: 1,
         date: "2025-01-16",
         username: "admin",
@@ -62,10 +62,10 @@ export const deleteReview = (reviewId, userId, isAdmin) => {
         return {success: false, error: 'Brak uprawnień do usunięcia tej opinii.'};
     }
 
-    const updatedReviews = storedReviews.filter(r => r.id != reviewId);
+    const updatedReviews = storedReviews.filter(r => r.id !== reviewId);
     localStorage.setItem('reviews', JSON.stringify(updatedReviews));
 
-    return true;
+    return { success: true };
 };
 
 export const initializeMockReviews = () => {

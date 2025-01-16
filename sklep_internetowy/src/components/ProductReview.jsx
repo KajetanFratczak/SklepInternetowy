@@ -45,7 +45,7 @@ const ProductReview = ({ productId }) => {
             userId: user.id,
             email: user.email,
             rating,
-            message
+            message,
         };
 
         const result = saveReview(newReview);
