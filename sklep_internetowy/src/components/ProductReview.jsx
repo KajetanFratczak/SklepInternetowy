@@ -55,6 +55,7 @@ const ProductReview = ({ productId }) => {
             setMessage('');
             setError('');
             loadReviews();
+            window.location.reload();
         } else {
             setError(result.error);
         }
