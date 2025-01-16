@@ -2,23 +2,46 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useContext } from 'react';
 import { CartContext } from '../context/Cart';
+import ProductReview from './ProductReview';
 
 const ProductDetails = () => {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const { addToCart } = useContext(CartContext);
     
     const apiURL = `https://fakestoreapi.com/products/${id}`;
 
     useEffect(() => {
+        setLoading(true);
         fetch(apiURL)
-            .then((response) => response.json())
-            .then((data) => setProduct(data));
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Nie udało się pobrać produktu');
+                }
+                return response.json();
+            })
+            .then((data) => {
+                setProduct(data);
+                setLoading(false);
+            })
+            .catch((err) => {
+                setError(err.message);
+                setLoading(false);
+            });
     }, [id]);
 
-    // Dodanie sprawdzenia, czy produkt jest załadowany - bez tego się wywala 
+    if (loading) {
+        return <div className="loading">Ładowanie szczegółów produktu...</div>;
+    }
+
+    if (error) {
+        return <div className="error">{error}</div>;
+    }
+
     if (!product) {
-        return <p>Ładowanie szczegółów produktu...</p>;
+        return <div className="error">Nie znaleziono produktu</div>;
     }
  
     return (
@@ -28,7 +51,21 @@ const ProductDetails = () => {
             <p>Kategoria: {product.category}</p>
             <p>Opis: {product.description}</p>
             <p>Cena: {product.price} zł</p>
-            <button onClick={() => addToCart(product)}>Dodaj do koszyka</button>
+            <button 
+                onClick={() => addToCart(product)}
+                style={{
+                    padding: '10px 20px',
+                    backgroundColor: '#4CAF50',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '4px',
+                    cursor: 'pointer',
+                    marginBottom: '20px'
+                }}
+            >
+                Dodaj do koszyka
+            </button>
+            <ProductReview productId={parseInt(id)} />
         </div>
     );
 };
