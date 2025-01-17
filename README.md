@@ -92,17 +92,14 @@ Projekt jest zbudowany przy użyciu **React** i **Node.js z Express**.
 
 ### Znalezione błędy i propozycje poprawek
 
-1. **Problem**: Usunięcie opinii jako użytkownik, a następnie dodanie kolejnej uniemożliwia jej ponowne usunięcie.
-   **Rozwiązanie**: Naprawić logikę usuwania opinii w bazie danych.
-
-2. **Problem**: Brak automatycznego odświeżania strony po dodaniu opinii.
+1. **Problem**: Brak automatycznego odświeżania strony po dodaniu opinii.
    **Rozwiązanie**: Implementacja automatycznego odświeżania komponentu.
 
-3. **Funkcjonalność**: Dodanie logo i nazwy użytkownika po zalogowaniu.
+2. **Funkcjonalność**: Dodanie logo i nazwy użytkownika po zalogowaniu.
 
-4. **Funkcjonalność**: Implementacja panelu administratora.
+3. **Funkcjonalność**: Implementacja panelu administratora.
 
-5. **Rozszerzenie**: Migracja danych użytkowników, zamówień i opinii z FakeStoreAPI do MongoDB oraz implementacja pełnych operacji CRUD.
+4. **Rozszerzenie**: Migracja danych użytkowników, zamówień i opinii z FakeStoreAPI do MongoDB oraz implementacja pełnych operacji CRUD.
 
 ---
 
