@@ -1,3 +1,4 @@
+// Definicja route-ów Express.js do zarządzania użytkownikami w aplikacji.
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -9,7 +10,6 @@ router.post('/register', async (req, res) => {
     try {
         const { username, email, password } = req.body;
 
-        // Sprawdzanie, czy użytkownik już istnieje
         const userExists = await User.findOne({ $or: [{ username }, { email }] });
         if (userExists) {
             return res.status(400).json({ error: 'Nazwa użytkownika lub email jest już zajęta.' });
@@ -38,7 +38,6 @@ router.post('/login', async (req, res) => {
             return res.status(400).json({ error: 'Błędne hasło.' });
         }
 
-        // Tworzenie tokenu JWT
         const token = jwt.sign({ userId: user._id, username: user.username, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
         res.status(200).json({ success: true, token });
     } catch (error) {

@@ -1,4 +1,4 @@
-// models/review.js
+//Definicja schematu Mongoose dla kolekcji Review w bazie danych MongoDB.
 const mongoose = require('mongoose');
 
 const reviewSchema = new mongoose.Schema({

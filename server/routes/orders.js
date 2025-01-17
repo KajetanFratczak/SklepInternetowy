@@ -1,3 +1,4 @@
+// Definicja route-ów Express.js do zarządzania zamówieniami w aplikacji.
 const express = require('express');
 const Order = require('../models/order');
 const { auth } = require('../middleware/auth');
@@ -7,8 +8,8 @@ const router = express.Router();
 router.get('/history', auth, async (req, res) => {
     try {
         const orders = await Order.find({ userId: req.user.userId })
-            .populate('products.productId') // Pobieramy dane o produktach (np. tytuł, cena)
-            .sort({ date: -1 }); // Sortowanie zamówień od najnowszych
+            .populate('products.productId') 
+            .sort({ date: -1 });
         res.status(200).json(orders);
     } catch (error) {
         res.status(500).json({ error: 'Błąd podczas pobierania historii zamówień.' });
@@ -27,7 +28,7 @@ router.post('/create', auth, async (req, res) => {
         const orderCount = await Order.countDocuments();
         const newOrder = new Order({
             userId: req.user.userId,
-            orderId: orderCount + 1, // Unikalny identyfikator zamówienia
+            orderId: orderCount + 1,
             products,
             totalPrice,
             status: 'in-progress'

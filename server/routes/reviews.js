@@ -1,10 +1,4 @@
-// Operacje CRUD:
-
-// GET: Pobranie opinii dla danego produktu.
-// POST: Dodanie nowej opinii.
-// PUT: Aktualizacja istniejącej opinii.
-// DELETE: Usunięcie opinii.
-
+// Definicja route-ów Express.js do zarządzania opiniami w aplikacji.
 const express = require('express');
 const router = express.Router();
 const Review = require('../models/review');

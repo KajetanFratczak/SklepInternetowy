@@ -1,4 +1,4 @@
-// config/database.js
+// Łączenie aplikacji z bazą danych MongoDB przy użyciu biblioteki mongoose
 const mongoose = require('mongoose');
 require('dotenv').config();
 

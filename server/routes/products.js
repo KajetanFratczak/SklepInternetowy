@@ -1,4 +1,4 @@
-// routes/products.js
+// Definicja route-ów Express.js do zarządzania produktami w aplikacji.
 const express = require('express');
 const router = express.Router();
 const Product = require('../models/product');

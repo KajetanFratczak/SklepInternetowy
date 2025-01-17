@@ -1,11 +1,11 @@
-// models/product.js
+//Definicja schematu Mongoose dla kolekcji Product w bazie danych MongoDB.
 const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({
     id: {
         type: Number,
         required: true,
-        unique: true // Zapewnia unikalność identyfikatora
+        unique: true 
     },
     title: {
         type: String,
@@ -49,24 +49,9 @@ const productSchema = new mongoose.Schema({
         min: 0
     }
 }, {
-    timestamps: true, // Dodaje automatycznie pola createdAt i updatedAt
-    _id: false // Wyłącza automatyczne tworzenie pola _id
+    timestamps: true, 
+    _id: false 
 });
-
-// Metoda do aktualizacji oceny produktu
-productSchema.methods.updateRating = async function(newRating) {
-    const currentCount = this.rating.count;
-    const currentRate = this.rating.rate;
-    
-    // Oblicz nową średnią ocenę
-    const newCount = currentCount + 1;
-    const newRate = ((currentRate * currentCount) + newRating) / newCount;
-    
-    this.rating.count = newCount;
-    this.rating.rate = Number(newRate.toFixed(1));
-    
-    await this.save();
-};
 
 const Product = mongoose.model('Product', productSchema);
 module.exports = Product;

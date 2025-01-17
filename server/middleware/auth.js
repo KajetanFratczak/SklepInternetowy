@@ -1,4 +1,4 @@
-// middleware/auth.js
+//Autoryzacja i weryfikacja roli użytkownika.
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 

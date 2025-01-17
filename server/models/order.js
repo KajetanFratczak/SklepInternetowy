@@ -1,3 +1,4 @@
+//Definicja schematu Mongoose dla kolekcji Order w bazie danych MongoDB.
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
@@ -13,12 +14,12 @@ const orderSchema = new mongoose.Schema({
     orderId: {
         type: Number,
         required: true,
-        unique: true // Zapewnia unikalność identyfikatora zamówienia
+        unique: true 
     },
     date: {
         type: Date,
         required: true,
-        default: Date.now // Automatycznie ustawia datę na bieżący czas
+        default: Date.now 
     },
     products: [
         {
@@ -49,12 +50,12 @@ const orderSchema = new mongoose.Schema({
     status: {
         type: String,
         required: true,
-        enum: ['in-progress', 'completed', 'cancelled'], // Dozwolone statusy
+        enum: ['in-progress', 'completed', 'cancelled'], 
         default: 'in-progress'
     }
 }, {
-    timestamps: true, // Automatycznie dodaje pola `createdAt` i `updatedAt`
-    _id: false // Wyłącza automatyczne tworzenie pola _id
+    timestamps: true, 
+    _id: false
 });
 
 const Order = mongoose.model('Order', orderSchema);

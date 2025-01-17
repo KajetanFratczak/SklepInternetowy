@@ -1,3 +1,4 @@
+//Wypełnienie bazy danych MongoDB przykładowymi danymi
 const mongoose = require('mongoose');
 const axios = require('axios');
 const Product = require('../models/product');
