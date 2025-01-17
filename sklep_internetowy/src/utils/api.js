@@ -60,5 +60,37 @@ export const api = {
         });
         if (!response.ok) throw new Error('Failed to create order');
         return response.json();
+    },
+
+    //Users
+    login: async (username, password) => {
+        const response = await fetch(`${API_BASE_URL}/users/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, password }),
+        });
+        if (!response.ok) throw new Error('Błędne dane logowania');
+        return response.json();
+    },
+
+    register: async (userData) => {
+        const response = await fetch(`${API_BASE_URL}/users/register`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userData),
+        });
+        if (!response.ok) throw new Error('Nie udało się zarejestrować');
+        return response.json();
+    },
+
+    getUserProfile: async (userId) => {
+        const response = await fetch(`${API_BASE_URL}/users/${userId}`);
+        if (!response.ok) throw new Error('Nie udało się pobrać profilu');
+        return response.json();
     }
+
 };
