@@ -1,3 +1,4 @@
+//Zestaw przykładowych opinii.
 export const mockReviews = [
     {
         id: 1,

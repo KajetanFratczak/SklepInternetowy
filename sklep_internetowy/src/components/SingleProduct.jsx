@@ -1,3 +1,4 @@
+//Komponent SingleProduct jest odpowiedzialny za wyświetlanie pojedynczego produktu w liście produktów.
 import React from 'react';
 import { Link } from 'react-router-dom';
 

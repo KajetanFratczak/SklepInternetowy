@@ -1,3 +1,4 @@
+//Komponent Register obsługuje proces rejestracji nowego użytkownika.
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { saveUser } from '../mocks/users';

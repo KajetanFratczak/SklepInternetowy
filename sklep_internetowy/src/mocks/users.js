@@ -1,3 +1,4 @@
+//Zestaw przykładowych użytkowników.
 export const mockUsers = [
     {
         id: 1,

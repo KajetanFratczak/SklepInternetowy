@@ -1,3 +1,4 @@
+//Zestaw przykładowych zamówień.
 export const mockOrders = [
     {
         id: 1,
@@ -47,7 +48,7 @@ export const saveOrder = (newOrder) => {
         ...newOrder,
         id: storedOrders.length + 1,
         orderId: nextOrderId,
-        status: 'in-progress' // domyślny status nowego zamówienia
+        status: 'in-progress'
     }];
     
     // Zapisz zaktualizowaną listę w localStorage

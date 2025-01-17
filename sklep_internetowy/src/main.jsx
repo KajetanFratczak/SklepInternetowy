@@ -1,7 +1,8 @@
+//Główny plik inicjalizacyjny aplikacji w React.
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
-import {CartProvider} from './context/Cart'
+import {CartProvider} from './context/CartContext'
 import {initializeMockUsers} from './mocks/users.js'
 import { initializeMockOrders } from './mocks/orders.js'
 import { initializeMockReviews } from './mocks/reviews.js'

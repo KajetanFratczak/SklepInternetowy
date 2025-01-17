@@ -1,3 +1,4 @@
+//Komponent CartProvider zarządza koszykiem zakupowym w aplikacji.
 import React from 'react';
 import { createContext, useState, useEffect } from 'react'
 

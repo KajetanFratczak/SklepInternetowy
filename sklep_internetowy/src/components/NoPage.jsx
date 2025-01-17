@@ -1,3 +1,4 @@
+//Komponent NoPage, który jest używany do obsługi błędu 404.
 import React from 'react';
 
 const NoPage = () => {

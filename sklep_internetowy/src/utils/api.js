@@ -1,4 +1,4 @@
-// src/utils/api.js
+//Zestaw funkcji API, które służą do komunikacji z Backendem aplikacji.
 
 const API_BASE_URL = 'http://localhost:8080/api';
 

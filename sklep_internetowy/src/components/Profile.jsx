@@ -1,3 +1,4 @@
+//Komponent Profile jest odpowiedzialny za wyświetlanie szczegółów profilu użytkownika.
 import React from 'react';
 import { useAuth } from '../context/AuthContext';
 

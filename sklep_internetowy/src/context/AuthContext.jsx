@@ -1,3 +1,4 @@
+//Komponent AuthProvider tworzy kontekst, który zarządza autentykacją użytkownika w aplikacji.
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -8,7 +9,6 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check for existing session on component mount
     const loggedInUser = localStorage.getItem('loggedInUser');
     if (loggedInUser) {
       setUser(JSON.parse(loggedInUser));
@@ -32,7 +32,6 @@ export const AuthProvider = ({ children }) => {
   const register = (username, email, password) => {
     const users = JSON.parse(localStorage.getItem('users')) || [];
     
-    // Add default admin account if it doesn't exist
     if (users.length === 0) {
       users.push({
         username: 'admin',

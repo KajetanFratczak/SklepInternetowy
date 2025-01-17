@@ -1,5 +1,6 @@
+//Komponent Cart, który odpowiada za wyświetlanie zawartości koszyka, zarządzanie jego elementami oraz składanie zamówienia.
 import React, { useContext } from 'react';
-import { CartContext } from '../context/Cart';
+import { CartContext } from '../context/CartContext';
 import { saveOrder } from '../mocks/orders';
 import {useAuth} from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';

@@ -1,3 +1,4 @@
+//Komponent Layout, który jest używany jako szablon strony
 import { Outlet, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
@@ -19,7 +20,6 @@ const Layout = () => {
             <li>
               <Link to="/cart">Koszyk</Link>
             </li>
-
             {user ? (
               <>
                 <li>

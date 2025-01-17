@@ -1,7 +1,8 @@
+//Komponent ProductDetails, który wyświetla szczegóły konkretnego produktu.
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useContext } from 'react';
-import { CartContext } from '../context/Cart';
+import { CartContext } from '../context/CartContext';
 import ProductReview from './ProductReview';
 import { api } from '../utils/api';
 

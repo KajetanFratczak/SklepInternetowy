@@ -1,5 +1,6 @@
+//Komponent Products jest odpowiedzialny za wyświetlanie listy produktów z możliwością filtrowania ich według kategorii oraz wyszukiwania po nazwie.
 import React, { useEffect, useState, useContext } from 'react';
-import { CartContext } from '../context/Cart';
+import { CartContext } from '../context/CartContext';
 import SingleProduct from './SingleProduct';
 import { api } from '../utils/api';
 

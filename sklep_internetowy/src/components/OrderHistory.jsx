@@ -1,3 +1,4 @@
+//Komponent OrderHistory, który wyświetla historię zamówień zalogowanego użytkownika.
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
@@ -27,6 +28,8 @@ const OrderHistory = () => {
                 return 'W trakcie realizacji';
             case 'completed':
                 return 'Zrealizowane';
+            case 'cancelled':
+                return 'Anulowane';
             default:
                 return status;
         }

@@ -1,3 +1,4 @@
+//Komponent ProductReview odpowiada za wyświetlanie i zarządzanie opiniami o produkcie.
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { saveReview, getProductReviews, deleteReview } from '../mocks/reviews';

@@ -1,3 +1,4 @@
+//Komponent Login, który umożliwia użytkownikowi logowanie do aplikacji.
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';

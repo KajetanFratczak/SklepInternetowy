@@ -1,3 +1,4 @@
+//Komponent Home, który renderuje stronę główną sklepu internetowego.
 import React from 'react';
 
 const Home = () => {
