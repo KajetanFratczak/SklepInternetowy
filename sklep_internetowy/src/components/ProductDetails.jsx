@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useContext } from 'react';
 import { CartContext } from '../context/Cart';
 import ProductReview from './ProductReview';
+import { api } from '../utils/api';
 
 const ProductDetails = () => {
     const { id } = useParams();
@@ -11,26 +12,22 @@ const ProductDetails = () => {
     const [error, setError] = useState(null);
     const { addToCart } = useContext(CartContext);
     
-    const apiURL = `https://fakestoreapi.com/products/${id}`;
-
     useEffect(() => {
-        setLoading(true);
-        fetch(apiURL)
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Nie udało się pobrać produktu');
+            const fetchProduct = async () => {
+                try {
+                    setLoading(true);
+                    const data = await api.getProductById(id);
+                    setProduct(data);
+                } catch (err) {
+                    setError(err.message);
+                } finally {
+                    setLoading(false);
                 }
-                return response.json();
-            })
-            .then((data) => {
-                setProduct(data);
-                setLoading(false);
-            })
-            .catch((err) => {
-                setError(err.message);
-                setLoading(false);
-            });
-    }, [id]);
+            };
+
+            fetchProduct();
+        }, [id]);
+    
 
     if (loading) {
         return <div className="loading">Ładowanie szczegółów produktu...</div>;

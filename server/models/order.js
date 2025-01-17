@@ -1,10 +1,14 @@
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
+    id: {
+        type: Number,
+        required: true,
+        unique: true
+    },
     userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
+        type: Number,
+        required: true,
     },
     orderId: {
         type: Number,
@@ -19,7 +23,7 @@ const orderSchema = new mongoose.Schema({
     products: [
         {
             productId: { 
-                type: mongoose.Schema.Types.ObjectId, 
+                type: Number, 
                 ref: 'Product',
                 required: true 
             },
@@ -49,7 +53,8 @@ const orderSchema = new mongoose.Schema({
         default: 'in-progress'
     }
 }, {
-    timestamps: true // Automatycznie dodaje pola `createdAt` i `updatedAt`
+    timestamps: true, // Automatycznie dodaje pola `createdAt` i `updatedAt`
+    _id: false // Wyłącza automatyczne tworzenie pola _id
 });
 
 const Order = mongoose.model('Order', orderSchema);

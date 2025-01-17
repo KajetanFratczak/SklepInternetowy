@@ -2,6 +2,11 @@
 const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({
+    id: {
+        type: Number,
+        required: true,
+        unique: true // Zapewnia unikalność identyfikatora
+    },
     title: {
         type: String,
         required: true,
@@ -44,7 +49,8 @@ const productSchema = new mongoose.Schema({
         min: 0
     }
 }, {
-    timestamps: true // Dodaje automatycznie pola createdAt i updatedAt
+    timestamps: true, // Dodaje automatycznie pola createdAt i updatedAt
+    _id: false // Wyłącza automatyczne tworzenie pola _id
 });
 
 // Metoda do aktualizacji oceny produktu

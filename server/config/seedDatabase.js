@@ -50,11 +50,12 @@ async function seedDatabase() {
         // Mockowane dane zamówień
         const mockOrders = [
             {
-                userId: savedUsers[0]._id, // Poprawiono na ObjectId użytkownika
+                id: 1,
+                userId: 1, 
                 orderId: 1,
                 date: "2025-01-16",
                 products: [{ 
-                    productId: savedProducts[0]._id,
+                    productId: 1,
                     title: "Fjallraven - Foldsack No. 1 Backpack",
                     price: 109.95,
                     quantity: 3
@@ -63,11 +64,12 @@ async function seedDatabase() {
                 status: "in-progress"
             },
             {
-                userId: savedUsers[1]._id, // Poprawiono na ObjectId użytkownika
+                id: 2,
+                userId: 2,
                 orderId: 2,
                 date: "2025-01-15",
                 products: [{ 
-                    productId: savedProducts[0]._id,
+                    productId: 1,
                     title: "Fjallraven - Foldsack No. 1 Backpack",
                     price: 109.95,
                     quantity: 1
@@ -82,8 +84,9 @@ async function seedDatabase() {
         // Mockowane dane recenzji
         const mockReviews = [
             {
-                userId: savedUsers[1]._id, // Poprawiono na ObjectId użytkownika
-                productId: savedProducts[0]._id,
+                id: 1,
+                userId: 2, 
+                productId: 1,
                 date: "2025-01-15",
                 username: "user1",
                 rating: 4,
@@ -91,8 +94,9 @@ async function seedDatabase() {
                 message: "Świetny produkt, polecam gorąco!"
             },
             {
-                userId: savedUsers[0]._id, // Poprawiono na ObjectId użytkownika
-                productId: savedProducts[0]._id,
+                id: 2,
+                userId: 1, 
+                productId: 1,
                 date: "2025-01-16",
                 username: "admin",
                 rating: 1,

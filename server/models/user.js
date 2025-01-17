@@ -3,6 +3,11 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
+    id: {
+        type: Number,
+        required: true,
+        unique: true
+    },
     username: {
         type: String,
         required: true,
@@ -26,7 +31,8 @@ const userSchema = new mongoose.Schema({
         default: 'user'
     }
 }, {
-    timestamps: true
+    timestamps: true,
+    _id: false
 });
 
 // Hash hasła przed zapisem

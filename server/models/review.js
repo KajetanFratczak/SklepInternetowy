@@ -2,14 +2,17 @@
 const mongoose = require('mongoose');
 
 const reviewSchema = new mongoose.Schema({
+    id: {
+        type: Number,
+        required: true,
+        unique: true
+    },
     userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        type: Number,
         required: true
     },
     productId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Product',
+        type: Number,
         required: true
     },
     rating: {
@@ -28,7 +31,8 @@ const reviewSchema = new mongoose.Schema({
         required: true
     }
 }, {
-    timestamps: true
+    timestamps: true,
+    _id: false
 });
 
 // Indeks złożony zapewniający, że użytkownik może dodać tylko jedną opinię do produktu
