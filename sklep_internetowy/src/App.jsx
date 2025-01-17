@@ -9,7 +9,6 @@ import Cart from "./components/Cart";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import OrderHistory from "./components/OrderHistory";
-import Admin from "./components/Admin";
 import Profile from "./components/Profile";
 import NoPage from "./components/NoPage";
 import './App.css'
@@ -28,7 +27,6 @@ function App()
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
             <Route path="orders" element={<ProtectedRoute><OrderHistory /></ProtectedRoute>} />
-            <Route path="admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
             <Route path="profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
             <Route path="*" element={<NoPage />} />
           </Route>
