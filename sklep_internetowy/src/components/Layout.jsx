@@ -25,11 +25,6 @@ const Layout = () => {
                 <li>
                   <Link to="/orders">Zamówienia</Link>
                 </li>
-                {user.role === 'admin' && (
-                  <li>
-                    <Link to="/admin">Panel Admina</Link>
-                  </li>
-                )}
                 <li>
                   <Link to="/profile">Mój Profil</Link>
                 </li>
