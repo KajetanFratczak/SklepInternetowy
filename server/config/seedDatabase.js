@@ -18,12 +18,9 @@ async function seedDatabase() {
         await Order.deleteMany({});
         await Review.deleteMany({});
 
-        // Pobieranie produktów z FakeStoreAPI
+        // Pobieranie wszystkich produktów z FakeStoreAPI
         const response = await axios.get('https://fakestoreapi.com/products');
-        const products = response.data.map(product => ({
-            ...product,
-            stock: Math.floor(Math.random() * 100) + 20 // Dodajemy losową ilość produktów na stanie (20-120)
-        }));
+        const products = response.data;
 
         // Zapisywanie produktów w bazie
         const savedProducts = await Product.insertMany(products);
